@@ -1,5 +1,5 @@
-# Sequelize Mock
-A simple mocking interface designed for applications that use the [sequelize.js](http://sequelizejs.com) library. This library is specifically for testing code relying on Sequelize models **and is therefore a very bare library at the moment**. The more complex functionality of Sequelize has not been included and the library will likely be fleshed out to include this functionality as needed.
+# Mock Sequelize
+A simple mocking interface designed for applications that use the [sequelize.js](http://sequelizejs.com) library. This library was forked from [https://github.com/BlinkUX/sequelize-mock](sequelize-mock) This library is specifically for testing code relying on Sequelize models **and is therefore a very bare library at the moment**. The more complex functionality of Sequelize has not been included and the library will likely be fleshed out to include this functionality as needed.
 
 Once Mock models have been defined, the mock models should be drop in replacements for your Sequelize model objects. Data is not retrieved from a database and instead is returned based on the setup of the mock objects, the query being made, and other applied or included information.
 
@@ -7,7 +7,7 @@ Once Mock models have been defined, the mock models should be drop in replacemen
 
 ```javascript
 // Import the mock library
-var SequelizeMock = require('sequelize-mock');
+var SequelizeMock = require('mock-sequelize');
 
 // Setup the mock database connection
 var DBConnectionMock = new SequelizeMock();
@@ -51,4 +51,4 @@ UserMock.findOne({
 
 # License
 
-Created by Blink UX and licensed under the MIT license. Check the LICENSE file for more information.
+Licensed under the MIT license. Check the LICENSE file for more information.
