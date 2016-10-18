@@ -32,6 +32,9 @@ fakeModel.prototype.generateTestModel = function (obj) {
 	for(var f in this._functions) {
 		item[f] = this._functions[f];
 	}
+	for (var i = 0; i < this._blackList.length; i++) {
+	delete item._values[this._blackList[i]];
+  }
 	return item;
 };
 //
@@ -160,4 +163,9 @@ fakeModel.prototype.belongsToMany = fakeModel.prototype.hasMany = function (item
 	};
 };
 
+fakeModel.prototype._blackList = [];
+
+fakeModel.prototype.removeAttribute = function (key) {
+	this._blackList.push(key);
+}
 module.exports = fakeModel;
