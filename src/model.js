@@ -85,7 +85,7 @@ fakeModel.prototype.belongsTo = fakeModel.prototype.hasOne = function (item, opt
 	if(!(item instanceof fakeModel)) {
 		return;
 	}
-	
+
 	var isString = typeof item === 'string',
 		name;
 	if(options && options.as) {
@@ -95,12 +95,12 @@ fakeModel.prototype.belongsTo = fakeModel.prototype.hasOne = function (item, opt
 	} else {
 		name = item.getTableName();
 	}
-	
+
 	var singular = Utils.uppercaseFirst( Utils.singularize(name) ),
 		plural = Utils.uppercaseFirst( Utils.pluralize(name) ),
 		self = this,
 		noop = function () { return Promise.resolve(self); };
-	
+
 	if(isString) {
 		this._functions['get' + singular] = function (opts) { return Promise.resolve(new Instance(null, opts && opts.where ? opts.where : opts)); };
 	} else {
@@ -117,14 +117,14 @@ fakeModel.prototype.belongsToMany = fakeModel.prototype.hasMany = function (item
 			}
 		};
 	}
-	
+
 	var isString = typeof item === 'string',
 		name, singular, plural;
 	if(options && options.as) {
 		name = options.as;
 		singular = Utils.uppercaseFirst( Utils.singularize(name) );
 		plural = Utils.uppercaseFirst( name );
-		
+
 	} else {
 		if (isString) {
 			name = item;
@@ -134,10 +134,10 @@ fakeModel.prototype.belongsToMany = fakeModel.prototype.hasMany = function (item
 		singular = Utils.uppercaseFirst( Utils.singularize(name) );
 		plural = Utils.uppercaseFirst( Utils.pluralize(name) );
 	}
-	
+
 	var self = this,
 		noop = function () { return Promise.resolve(self); };
-	
+
 	if(isString) {
 		this._functions['get' + plural] = function (opts) { return Promise.resolve([new Instance(name, opts && opts.where ? opts.where : opts)]); };
 	} else {
@@ -152,7 +152,7 @@ fakeModel.prototype.belongsToMany = fakeModel.prototype.hasMany = function (item
 	this._functions['has' + singular] = function () { return Promise.resolve(false); };
 	this._functions['has' + plural] = function () { return Promise.resolve(false); };
 	this._functions['count' + plural] = function () { return Promise.resolve(0); };
-	
+
 	return {
 		through: {
 			model: new fakeModel()
