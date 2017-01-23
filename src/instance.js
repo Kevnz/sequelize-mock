@@ -14,8 +14,9 @@ function fakeModelInstance (defaults, obj) {
 	this._values.createdAt = this._values.createdAt || new Date();
 	this._values.updatedAt = this._values.updatedAt || new Date();
 
-	_.forEach(this._values, function(value, key) {
-		this[key] = value
+	var instance = this;
+	_.forEach(instance._values, function(value, key) {
+		instance[key] = value
 	});
 }
 fakeModelInstance.prototype.set = function(key, val) { this._values[key] = val; };
