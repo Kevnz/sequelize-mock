@@ -14,9 +14,15 @@ function fakeModel (name, defaults, opts) {
 	this.name = name;
 	this._defaults = defaults || {};
 	this._functions = {};
+	this._classFunctions = {};
 	if(opts && opts.instanceMethods) {
 		_.extend(this._functions, opts.instanceMethods);
 	}
+
+	if(opts && opts.classMethods) {
+		_.extend(this._classFunctions, opts.classMethods);
+	}
+
 	this._wasCreated = true;
 	this.Instance = {};
 	this.Instance.prototype = this._functions;
