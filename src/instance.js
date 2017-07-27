@@ -25,5 +25,5 @@ fakeModelInstance.prototype.update = function (obj) {
 	return bluebird.resolve(this);
 };
 fakeModelInstance.prototype.toJSON = fakeModelInstance.prototype.toJson = function () { return this._values; };
-
+fakeModelInstance.addScope = function() {  };
 module.exports = fakeModelInstance;
