@@ -1,6 +1,6 @@
 {
   "name": "mock-sequelize",
-  "version": "1.1.0",
+  "version": "1.1.1",
   "description": "A simple mock interface specifically for testing code relying on Sequelize models",
   "main": "src/index.js",
   "scripts": {
