@@ -167,5 +167,8 @@ fakeModel.prototype._blackList = [];
 
 fakeModel.prototype.removeAttribute = function (key) {
 	this._blackList.push(key);
-}
+};
+
+fakeModel.prototype.addScope = function() {  };
+
 module.exports = fakeModel;
